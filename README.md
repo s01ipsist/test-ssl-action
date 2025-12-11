@@ -30,7 +30,7 @@ jobs:
 
 ## Outputs
 
-The action saves JSON results to `/github/workspace/testssl_results_<timestamp>.json`.
+The action saves JSON results to `testssl_results_<timestamp>.json`.
 
 ## About testssl.sh
 
