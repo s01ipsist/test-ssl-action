@@ -1,0 +1,18 @@
+name: 'Test SSL'
+description: 'GitHub Action to check SSL/TLS ciphers, protocols, cryptographic flaws + much more'
+author: 's01ipsist'
+
+inputs:
+  uri:
+    description: 'The URI to test (e.g., https://expired.badssl.com/)'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.uri }}
+
+branding:
+  icon: 'shield'
+  color: 'green'

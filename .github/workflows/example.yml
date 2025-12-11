@@ -1,0 +1,25 @@
+name: Example SSL Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_uri:
+        description: 'URI to test (e.g., https://expired.badssl.com/)'
+        required: true
+        default: 'https://expired.badssl.com/'
+
+jobs:
+  test-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test SSL/TLS
+        uses: s01ipsist/test-ssl-action@main
+        with:
+          uri: ${{ github.event.inputs.test_uri || 'https://expired.badssl.com/' }}
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testssl-results
+          path: testssl_results_*.json
