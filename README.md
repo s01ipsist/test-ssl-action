@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Test SSL/TLS
         uses: s01ipsist/test-ssl-action@main
@@ -21,7 +21,7 @@ jobs:
           uri: 'https://example.com'
       
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: testssl-results
           path: testssl_results_*.json
