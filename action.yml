@@ -4,7 +4,7 @@ author: 's01ipsist'
 
 inputs:
   uri:
-    description: 'The URI to test (e.g., https://example.com)'
+    description: 'The URI to test (e.g., https://expired.badssl.com/)'
     required: true
 
 runs:

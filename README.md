@@ -12,13 +12,10 @@ jobs:
   test-ssl:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
       - name: Test SSL/TLS
         uses: s01ipsist/test-ssl-action@main
         with:
-          uri: 'https://example.com'
+          uri: 'https://expired.badssl.com/'
       
       - name: Upload results
         uses: actions/upload-artifact@v4
@@ -29,7 +26,7 @@ jobs:
 
 ## Inputs
 
-- `uri` (required): The URI to test (e.g., `https://example.com`)
+- `uri` (required): The URI to test (e.g., `https://expired.badssl.com/`)
 
 ## Outputs
 
