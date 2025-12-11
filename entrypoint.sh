@@ -1,7 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 # Get the URI from the first argument
 URI="$1"
+
+# Validate that URI is provided
+if [ -z "$URI" ]; then
+  echo "Error: URI is required"
+  exit 1
+fi
 
 # Set the output directory to /github/workspace
 OUTPUT_DIR="/github/workspace"
@@ -17,7 +23,8 @@ echo "Testing SSL/TLS for: $URI"
 echo "Output will be saved to: $OUTPUT_FILE"
 
 # Run testssl.sh with the provided URI and save JSON output
-testssl.sh --jsonfile "$OUTPUT_FILE" "$URI"
+# Using proper quoting to prevent any injection issues
+testssl.sh --jsonfile "$OUTPUT_FILE" -- "$URI"
 
 EXIT_CODE=$?
 
