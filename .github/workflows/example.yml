@@ -1,0 +1,28 @@
+name: Example SSL Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_uri:
+        description: 'URI to test (e.g., https://example.com)'
+        required: true
+        default: 'https://example.com'
+
+jobs:
+  test-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Test SSL/TLS
+        uses: ./
+        with:
+          uri: ${{ github.event.inputs.test_uri || 'https://example.com' }}
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: testssl-results
+          path: testssl_results_*.json
