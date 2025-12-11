@@ -1,30 +1,24 @@
 #!/bin/bash
 
-# Get the URI from the first argument
-URI="$1"
-
-# Validate that URI is provided
-if [ -z "$URI" ]; then
-  echo "Error: URI is required"
+# Validate that INPUT_URI is provided
+if [ -z "$INPUT_URI" ]; then
+  echo "Error: INPUT_URI is required"
   exit 1
 fi
 
 # Set the output directory to /github/workspace
 OUTPUT_DIR="/github/workspace"
 
-# Create output directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR"
-
-# Generate a filename based on the URI and timestamp
+# Generate a filename based on the INPUT_URI and timestamp
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 OUTPUT_FILE="$OUTPUT_DIR/testssl_results_${TIMESTAMP}.json"
 
-echo "Testing SSL/TLS for: $URI"
+echo "Testing SSL/TLS for: $INPUT_URI"
 echo "Output will be saved to: $OUTPUT_FILE"
 
-# Run testssl.sh with the provided URI and save JSON output
+# Run testssl.sh with the provided INPUT_URI and save JSON output
 # Using proper quoting to prevent any injection issues
-testssl.sh --jsonfile "$OUTPUT_FILE" -- "$URI"
+testssl.sh --jsonfile "$OUTPUT_FILE" -- "$INPUT_URI"
 
 EXIT_CODE=$?
 
