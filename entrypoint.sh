@@ -6,12 +6,9 @@ if [ -z "$INPUT_URI" ]; then
   exit 1
 fi
 
-# Set the output directory to /github/workspace
-OUTPUT_DIR="/github/workspace"
-
 # Generate a filename based on the INPUT_URI and timestamp
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-OUTPUT_FILE="$OUTPUT_DIR/testssl_results_${TIMESTAMP}.json"
+OUTPUT_FILE="testssl_results_${TIMESTAMP}.json"
 
 echo "Testing SSL/TLS for: $INPUT_URI"
 echo "Output will be saved to: $OUTPUT_FILE"
