@@ -35,6 +35,9 @@ on: [push]
 jobs:
   test-ssl-matrix:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     strategy:
       matrix:
         uri:
